@@ -1,0 +1,948 @@
+# building
+
+export HOST_UID=$(id -u)
+export HOST_GID=$(id -g)
+
+docker build --build-arg UID=$HOST_UID --build-arg GID=$HOST_GID -t urlretriever .
+[+] Building 3.6s (13/13) FINISHED                                                                                                                                                                                 docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                                                         0.1s
+ => => transferring dockerfile: 899B                                                                                                                                                                                         0.0s
+ => [internal] load metadata for docker.io/library/debian:latest                                                                                                                                                             2.1s
+ => [auth] library/debian:pull token for registry-1.docker.io                                                                                                                                                                0.0s
+ => [internal] load .dockerignore                                                                                                                                                                                            0.0s
+ => => transferring context: 2B                                                                                                                                                                                              0.0s
+ => [internal] load build context                                                                                                                                                                                            0.1s
+ => => transferring context: 3.52kB                                                                                                                                                                                          0.0s
+ => [1/7] FROM docker.io/library/debian:latest@sha256:10901ccd8d249047f9761845b4594f121edef079cfd8224edebd9ea726f0a7f6                                                                                                       0.1s
+ => => resolve docker.io/library/debian:latest@sha256:10901ccd8d249047f9761845b4594f121edef079cfd8224edebd9ea726f0a7f6                                                                                                       0.1s
+ => CACHED [2/7] RUN apt-get update --yes && apt-get upgrade --yes && apt-get install curl jq --yes                                                                                                                          0.0s
+ => CACHED [3/7] RUN groupadd --gid 1000 nonroot                                                                                                                                                                             0.0s
+ => CACHED [4/7] RUN useradd -u 1000 -r -g nonroot nonroot                                                                                                                                                                   0.0s
+ => CACHED [5/7] WORKDIR /scripts                                                                                                                                                                                            0.0s
+ => CACHED [6/7] RUN chown -R nonroot:nonroot /scripts                                                                                                                                                                       0.0s
+ => [7/7] COPY scripts/*.sh .                                                                                                                                                                                                0.2s
+ => exporting to image                                                                                                                                                                                                       0.8s
+ => => exporting layers                                                                                                                                                                                                      0.3s
+ => => exporting manifest sha256:66d993715dec1fd4a3da8cfeec5ca1feb9a79ed14fc2e078159fd1af49aac937                                                                                                                            0.1s
+ => => exporting config sha256:fa26fce6212ec764a5ba8af238d1bfa99765a4bbeb8bc42c28845acc33b2b568                                                                                                                              0.0s
+ => => exporting attestation manifest sha256:671f7ecc7f5b93685ed2e13766340b9a1403d8220088fa2db1faaf45a81266cb                                                                                                                0.1s
+ => => exporting manifest list sha256:a88ee412cf3e7b2c775cb9321a20496d428e3e47babb63cf906d220eee05e5cd                                                                                                                       0.1s
+ => => naming to docker.io/library/urlretriever:latest                                                                                                                                                                       0.0s
+ => => unpacking to docker.io/library/urlretriever:latest 
+
+
+JSON
+
+ docker run -it urlretriever -u "https://arstechnica.com/" -u "https://stackoverflow.com/" -o json
+{
+  "http:/www.w3.org": [
+    "/2000/svg",
+    "/2000/svg"
+  ],
+  "https:/ads-static.conde.digital": [
+    "/production/cns/builds/ars-technica/ars-technica.min.js"
+  ],
+  "https:/arstechnica.com": [
+    "/",
+    "/about-us/",
+    "/ai/",
+    "/ai/2024/11/nvidias-new-ai-audio-model-can-synthesize-sounds-that-have-never-existed/",
+    "/ai/2024/11/openai-is-at-war-with-its-own-sora-video-testers-following-brief-public-leak/",
+    "/cars/",
+    "/cars/2024/11/cadillac-f1-will-be-able-to-race-from-2026-despite-previous-snub/",
+    "/contact-us/",
+    "/culture/",
+    "/culture/2024/11/flour-water-salt-github-the-bread-code-is-a-sourdough-baking-framework/",
+    "/culture/2024/11/keanu-reeves-voices-arch-villain-shadow-in-sonic-3-trailer/",
+    "/culture/2024/11/player-456-is-back-for-revenge-in-squid-game-s2-trailer/",
+    "/gadgets/",
+    "/gadgets/2024/11/are-any-of-apples-official-magsafe-accessories-worth-buying/",
+    "/gadgets/2024/11/qnap-firmware-update-leaves-nas-owners-locked-out-of-their-boxes/",
+    "/gadgets/2024/11/smart-gadgets-failure-to-commit-to-software-support-could-be-illegal-ftc-warns/",
+    "/gadgets/2024/11/the-upside-down-capacitor-in-mid-90s-macs-proven-and-documented-by-hobbyists/",
+    "/gadgets/2024/11/vintage-digicams-arent-just-a-fad-theyre-an-artistic-statement/",
+    "/gaming/",
+    "/gaming/2024/11/sony-is-reportedly-working-on-a-ps5-portable/",
+    "/gaming/2024/11/the-atari-7800-is-a-no-frills-glimpse-into-a-forgotten-gaming-era/",
+    "/general-faq/",
+    "/health/",
+    "/health/2024/11/biden-proposes-guardrails-on-health-care-ai-upping-weight-loss-drug-access/",
+    "/health/2024/11/man-suffers-chemical-burn-that-lasted-months-after-squeezing-limes/",
+    "/health/2024/11/raw-milk-recalled-for-containing-bird-flu-virus-california-reports/",
+    "/health/2024/11/things-arent-looking-good-for-infamous-ceo-of-health-care-terrorists/",
+    "/information-technology/",
+    "/newsletters/",
+    "/page/2/",
+    "/reprints/",
+    "/rss-feeds/",
+    "/science/",
+    "/science/2024/11/300-billion-pledge-at-cop29-climate-summit-a-paltry-sum/",
+    "/science/2024/11/getting-a-drone-to-fly-like-a-pigeon/",
+    "/science/2024/11/how-should-we-treat-beings-that-might-be-sentient/",
+    "/science/2024/11/licking-this-lollipop-will-let-you-taste-virtual-flavors/",
+    "/science/2024/11/what-fossilized-dino-feces-can-tell-us-about-their-rise-to-dominance/",
+    "/search/",
+    "/security/",
+    "/security/2024/11/code-found-online-exploits-logofail-to-install-bootkitty-linux-backdoor/",
+    "/security/2024/11/found-in-the-wild-the-worlds-first-unkillable-uefi-bootkit-for-linux/",
+    "/shopping/2024/11/its-black-friday-and-here-are-the-best-shopping-deals-we-could-find/",
+    "/space/",
+    "/space/2024/11/rocket-report-a-good-week-for-blue-origin-italy-wants-its-own-launch-capability/",
+    "/space/2024/11/with-dragonfly-contract-nasa-will-certify-spacex-for-nuclear-powered-payloads/",
+    "/staff-directory/",
+    "/tech-policy/",
+    "/tech-policy/2024/11/doj-wraps-up-ad-tech-trial-google-is-three-times-a-monopolist/",
+    "/tech-policy/2024/11/fcc-approves-starlink-plan-for-cellular-phone-service-with-some-limits/",
+    "/tech-policy/2024/11/google-drags-ai-rivals-into-search-trial-as-judge-entertains-ai-remedies/",
+    "/tech-policy/2024/11/isps-say-their-excellent-customer-service-is-why-users-dont-switch-providers/",
+    "/tech-policy/2024/11/supreme-court-may-decide-whether-isps-must-terminate-users-accused-of-piracy/",
+    "/tech-policy/2024/11/supreme-court-to-decide-whether-fcc-universal-service-fund-is-an-illegal-tax/",
+    "/tech-policy/2024/11/tech-problems-plague-openai-court-battles-judge-rejects-a-key-fair-use-defense/",
+    "/tech-policy/2024/11/trump-targets-mexico-and-canada-with-tariffs-plus-an-extra-10-for-china/",
+    "/tech-policy/2024/11/workers-demand-more-transparency-after-intel-secures-8b-chips-funding/",
+    "/video/"
+  ],
+  "https:/c.arstechnica.com": [
+    "/"
+  ],
+  "https:/cdn.arstechnica.net": [
+    "/wp-content/mu-plugins/ars-snowplow/ars-snowplow-js/dist/main-1-0-4.js?ver=1.0.4",
+    "/wp-content/plugins/_composer_elasticpress/dist/css/facets-styles.css?ver=7d568203f3965dc85d8a",
+    "/wp-content/plugins/_composer_elasticpress/dist/css/highlighting-styles.css?ver=252562c4ed9241547293",
+    "/wp-content/plugins/article-forum-connect/public/js/iframe-resizer.parent.js?ver=5.3.1",
+    "/wp-content/plugins/article-forum-connect/public/js/iframe.js?ver=1.2.4",
+    "/wp-content/themes/ars-v9/public/css/ads.872a06.css",
+    "/wp-content/themes/ars-v9/public/css/app.eec9eb.css",
+    "/wp-content/themes/ars-v9/public/js/ads.b1f8e1.js",
+    "/wp-content/themes/ars-v9/public/js/app.2f0f0b.js",
+    "/wp-content/themes/ars-v9/public/js/stats.ce8765.js",
+    "/wp-content/themes/ars-v9/resources/scripts/jquery-3.7.1.min.js?ver=3.7.1",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-1000x1000.jpg",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-1152x648.jpg",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-150x150.jpg",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-1536x864.jpg",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-384x216.jpg",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-500x500.jpg",
+    "/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-768x432.jpg",
+    "/wp-content/uploads/2016/10/cropped-ars-logo-512_480-300x300.png",
+    "/wp-content/uploads/2016/10/cropped-ars-logo-512_480-60x60.png",
+    "/wp-content/uploads/2016/10/cropped-ars-logo-512_480.png",
+    "/wp-content/uploads/2022/07/chip-based-rootkit-384x216.jpeg",
+    "/wp-content/uploads/2022/07/chip-based-rootkit-768x432.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-1000x1000.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-1152x648.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-150x150.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-1536x864.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-384x216.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-500x500.jpeg",
+    "/wp-content/uploads/2023/04/GettyImages-1038813590-768x432.jpeg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-1000x1000-1732556402.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-1152x648.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-1440x812.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-1536x864.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-2048x1155.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-300x169.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-300x300-1732556401.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-384x216.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-500x500-1732556402.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-640x361.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-768x432.jpg",
+    "/wp-content/uploads/2023/09/getty-supreme-court-980x553.jpg",
+    "/wp-content/uploads/2024/01/starlink-direct-to-cell-1152x648.jpeg",
+    "/wp-content/uploads/2024/01/starlink-direct-to-cell-1536x864.jpeg",
+    "/wp-content/uploads/2024/01/starlink-direct-to-cell-384x216.jpeg",
+    "/wp-content/uploads/2024/01/starlink-direct-to-cell-768x432.jpeg",
+    "/wp-content/uploads/2024/02/music-pirate-1000x1000-1732568014.jpg",
+    "/wp-content/uploads/2024/02/music-pirate-1152x648.jpg",
+    "/wp-content/uploads/2024/02/music-pirate-1536x864.jpg",
+    "/wp-content/uploads/2024/02/music-pirate-300x300-1732568013.jpg",
+    "/wp-content/uploads/2024/02/music-pirate-384x216.jpg",
+    "/wp-content/uploads/2024/02/music-pirate-500x500-1732568013.jpg",
+    "/wp-content/uploads/2024/02/music-pirate-768x432.jpg",
+    "/wp-content/uploads/2024/03/backdoor-150x150.jpg",
+    "/wp-content/uploads/2024/03/backdoor-384x216.jpg",
+    "/wp-content/uploads/2024/03/backdoor-500x500.jpg",
+    "/wp-content/uploads/2024/03/backdoor-768x432.jpg",
+    "/wp-content/uploads/2024/08/snoo-1152x648.jpg",
+    "/wp-content/uploads/2024/08/snoo-1536x864.jpg",
+    "/wp-content/uploads/2024/08/snoo-384x216.jpg",
+    "/wp-content/uploads/2024/08/snoo-768x432.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-1152x648.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-1536x864.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-300x300.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-384x216.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-500x500.jpg",
+    "/wp-content/uploads/2024/11/2024-11-25-16.55.57-768x432.jpg",
+    "/wp-content/uploads/2024/11/727-1152x648.jpg",
+    "/wp-content/uploads/2024/11/727-300x300.jpg",
+    "/wp-content/uploads/2024/11/727-384x216.jpg",
+    "/wp-content/uploads/2024/11/727-500x500.jpg",
+    "/wp-content/uploads/2024/11/727-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1182219843-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1458194548-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1458194548-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1458194548-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1458194548-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1469448038-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-157422481-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-157422481-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-157422481-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-157422481-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1877759960-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1877759960-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1877759960-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-1877759960-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2100329027-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2100329027-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2161647244-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2170989607-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2170989607-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2170989607-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2170989607-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-2177324845-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-84659415-768x432.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-1152x648.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-1536x864.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-300x300.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-384x216.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-500x500.jpg",
+    "/wp-content/uploads/2024/11/GettyImages-878804024-768x432.jpg",
+    "/wp-content/uploads/2024/11/IMG_5426-Large-1152x648-1732650962.jpeg",
+    "/wp-content/uploads/2024/11/IMG_5426-Large-1536x864-1732650963.jpeg",
+    "/wp-content/uploads/2024/11/IMG_5426-Large-384x216-1732650961.jpeg",
+    "/wp-content/uploads/2024/11/IMG_5426-Large-768x432-1732650962.jpeg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1024x576.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1152x648.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1440x810.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1536x864.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-2048x1152.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-300x300.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-384x216.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-500x500.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-640x360.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-768x432.jpg",
+    "/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-980x551.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-1152x648.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-1536x864.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-384x216.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-768x432.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-scaled-1000x1000-1732648817.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-scaled-300x300-1732648816.jpg",
+    "/wp-content/uploads/2024/11/call-center-robot-scaled-500x500-1732648817.jpg",
+    "/wp-content/uploads/2024/11/capacitors-1152x648.jpg",
+    "/wp-content/uploads/2024/11/capacitors-1536x864.jpg",
+    "/wp-content/uploads/2024/11/capacitors-384x216.jpg",
+    "/wp-content/uploads/2024/11/capacitors-768x432.jpg",
+    "/wp-content/uploads/2024/11/containers-1000x1000.jpg",
+    "/wp-content/uploads/2024/11/containers-1024x576.jpg",
+    "/wp-content/uploads/2024/11/containers-1152x648.jpg",
+    "/wp-content/uploads/2024/11/containers-1440x810.jpg",
+    "/wp-content/uploads/2024/11/containers-1536x864.jpg",
+    "/wp-content/uploads/2024/11/containers-2048x1152.jpg",
+    "/wp-content/uploads/2024/11/containers-300x300.jpg",
+    "/wp-content/uploads/2024/11/containers-384x216.jpg",
+    "/wp-content/uploads/2024/11/containers-500x500.jpg",
+    "/wp-content/uploads/2024/11/containers-640x360.jpg",
+    "/wp-content/uploads/2024/11/containers-768x432.jpg",
+    "/wp-content/uploads/2024/11/containers-980x551.jpg",
+    "/wp-content/uploads/2024/11/cop29-300x300.jpg",
+    "/wp-content/uploads/2024/11/cop29-384x216.jpg",
+    "/wp-content/uploads/2024/11/cop29-500x500.jpg",
+    "/wp-content/uploads/2024/11/cop29-768x432.jpg",
+    "/wp-content/uploads/2024/11/doradog-scaled-1152x648-1732725978.jpg",
+    "/wp-content/uploads/2024/11/doradog-scaled-1536x864-1732725978.jpg",
+    "/wp-content/uploads/2024/11/doradog-scaled-384x216-1732725977.jpg",
+    "/wp-content/uploads/2024/11/doradog-scaled-768x432-1732725977.jpg",
+    "/wp-content/uploads/2024/11/feces4CROP-1152x648.jpg",
+    "/wp-content/uploads/2024/11/feces4CROP-384x216.jpg",
+    "/wp-content/uploads/2024/11/feces4CROP-768x432.jpg",
+    "/wp-content/uploads/2024/11/graphite-impact-shell-gis-300x300.jpg",
+    "/wp-content/uploads/2024/11/graphite-impact-shell-gis-384x216.jpg",
+    "/wp-content/uploads/2024/11/graphite-impact-shell-gis-500x500.jpg",
+    "/wp-content/uploads/2024/11/graphite-impact-shell-gis-768x432.jpg",
+    "/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-1152x648-1732301719.jpg",
+    "/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-1536x864-1732301720.jpg",
+    "/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-384x216-1732301717.jpg",
+    "/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-768x432-1732301718.jpg",
+    "/wp-content/uploads/2024/11/lollipop1CROP-1152x648.jpg",
+    "/wp-content/uploads/2024/11/lollipop1CROP-300x300.jpg",
+    "/wp-content/uploads/2024/11/lollipop1CROP-384x216.jpg",
+    "/wp-content/uploads/2024/11/lollipop1CROP-500x500.jpg",
+    "/wp-content/uploads/2024/11/lollipop1CROP-768x432.jpg",
+    "/wp-content/uploads/2024/11/newglenn1-1152x648.jpg",
+    "/wp-content/uploads/2024/11/newglenn1-1536x864.jpg",
+    "/wp-content/uploads/2024/11/newglenn1-384x216.jpg",
+    "/wp-content/uploads/2024/11/newglenn1-768x432.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-1024x576.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-1152x648.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-300x300.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-384x216.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-500x500.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-640x360.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-768x432.jpg",
+    "/wp-content/uploads/2024/11/qnap_box-980x551.jpg",
+    "/wp-content/uploads/2024/11/qnap_box.jpg",
+    "/wp-content/uploads/2024/11/sonic3-1152x648.jpg",
+    "/wp-content/uploads/2024/11/sonic3-300x300.jpg",
+    "/wp-content/uploads/2024/11/sonic3-384x216.jpg",
+    "/wp-content/uploads/2024/11/sonic3-500x500.jpg",
+    "/wp-content/uploads/2024/11/sonic3-768x432.jpg",
+    "/wp-content/uploads/2024/11/squid1-1152x648.jpg",
+    "/wp-content/uploads/2024/11/squid1-300x300.jpg",
+    "/wp-content/uploads/2024/11/squid1-384x216.jpg",
+    "/wp-content/uploads/2024/11/squid1-500x500.jpg",
+    "/wp-content/uploads/2024/11/squid1-768x432.jpg"
+  ],
+  "https:/cdn.cookielaw.org": [
+    "/",
+    "/opt-out/otCCPAiab.js",
+    "/scripttemplates/otSDKStub.js",
+    "/scripttemplates/otSDKStub.js"
+  ],
+  "https:/geolocation.onetrust.com": [
+    "/"
+  ],
+  "https:/globalservices.conde.digital": [
+    "/"
+  ],
+  "https:/mastodon.social": [
+    "/"
+  ],
+  "https:/player.cnevids.com": [
+    "/",
+    "/interlude/arstechnica.js"
+  ],
+  "https:/schema.org": [
+    "/"
+  ],
+  "https:/shiverscissors.com": [
+    "/v2fumwIJOo-LsCB0dlG18VSTW43CpWhUEPJuKeRTzrEQdSPPlMr5GymU"
+  ],
+  "https:/twitter.com": [
+    "/arstechnica",
+    "/stackoverflow"
+  ],
+  "https:/www.aboutads.info": [
+    "/"
+  ],
+  "https:/www.condenast.com": [
+    "/brands/ars-technica",
+    "/privacy-policy/",
+    "/user-agreement/"
+  ],
+  "https:/www.facebook.com": [
+    "/arstechnica",
+    "/officialstackoverflow/"
+  ],
+  "https:/www.googletagmanager.com": [
+    "/gtm.js?id=",
+    "/ns.html?id=GTM-NLXNPCQ",
+    "/gtag/js?id=G-WCZ03SZFCQ"
+  ],
+  "https:/www.googletagservices.com": [
+    "/tag/js/gpt.js"
+  ],
+  "https:/www.instagram.com": [
+    "/arstechnica/",
+    "/thestackoverflow"
+  ],
+  "https:/www.youtube.com": [
+    "/"
+  ],
+  "https:/ai.stackexchange.com": [
+    "/"
+  ],
+  "https:/ajax.googleapis.com": [
+    "/ajax/libs/jquery/3.7.1/jquery.min.js",
+    "/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js",
+    "/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css"
+  ],
+  "https:/api.stackexchange.com": [
+    "/"
+  ],
+  "https:/apple.stackexchange.com": [
+    "/"
+  ],
+  "https:/askubuntu.com": [
+    "/"
+  ],
+  "https:/cdn.sstatic.net": [
+    "/",
+    "/Img/home/home-overflowai.png?v=69c7882132fb",
+    "/Img/home/home-teams.png?v=3a3570e5f7a6",
+    "/Img/home/illo-home-careers.png?v=b883022c31e3",
+    "/Img/home/illo-home-hero.png?v=4718e8f857c5",
+    "/Img/teams/teams-promo.svg?v=e507948b81bf",
+    "/Js/islands/homepage-wizard.en.js?v=ded99e89b1fe",
+    "/Js/islands/one-tap.en.js?v=23f8c3257ece",
+    "/Js/islands/signup-modal.en.js?v=83630fec4fc9",
+    "/Js/modules/cookie-consent.en.js?v=36bebc18e04f",
+    "/Js/stub.en.js?v=44cbb4d4d062",
+    "/Js/third-party/npm/",
+    "/Js/webpack-chunks/1315.en.js?v=d971ebf7a8e2",
+    "/Js/webpack-chunks/3397.en.js?v=ecde4075784a",
+    "/Js/webpack-chunks/5906.en.js?v=2f743119b3b6",
+    "/Js/webpack-chunks/7224.en.js?v=8ca862d5f302",
+    "/Js/webpack-chunks/stacks-svelte.en.js?v=e36593c9174c",
+    "/Js/webpack-chunks/svelte.en.js?v=150134e89426",
+    "/Shared/Channels/channels.css?v=5981bb1a5bd7",
+    "/Shared/Product/product.css?v=669cb299504f",
+    "/Shared/stacks.css?v=619122b796ae",
+    "/Sites/ai/Img/apple-touch-icon.png?v=f14d741b295c",
+    "/Sites/apple/Img/apple-touch-icon.png?v=daa7ff1d953e",
+    "/Sites/askubuntu/Img/apple-touch-icon.png?v=e16e1315edd6",
+    "/Sites/dba/Img/apple-touch-icon.png?v=cdcd5ff7b29e",
+    "/Sites/gamedev/Img/apple-touch-icon.png?v=0cfb55927bd2",
+    "/Sites/networkengineering/Img/apple-touch-icon.png?v=d66b1118cec8",
+    "/Sites/quantumcomputing/Img/apple-touch-icon.png?v=2af3cc2b87e8",
+    "/Sites/serverfault/Img/apple-touch-icon.png?v=6c3100d858bb",
+    "/Sites/softwareengineering/Img/apple-touch-icon.png?v=5e581fc45e58",
+    "/Sites/stackoverflow/Img/apple-touch-icon",
+    "/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a",
+    "/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196",
+    "/Sites/stackoverflow/Img/icon-48.png?v=b7e36f88ff92",
+    "/Sites/stackoverflow/primary.css?v=0420bc7abade",
+    "/Sites/superuser/Img/apple-touch-icon.png?v=0ad5b7a83e49",
+    "/Sites/unix/Img/apple-touch-icon.png?v=5cf7fe716a89"
+  ],
+  "https:/chat.stackoverflow.com": [
+    "/?tab=site"
+  ],
+  "https:/data.stackexchange.com": [
+    "/"
+  ],
+  "https:/dba.stackexchange.com": [
+    "/"
+  ],
+  "https:/gamedev.stackexchange.com": [
+    "/"
+  ],
+  "https:/linkedin.com": [
+    "/company/stack-overflow"
+  ],
+  "https:/meta.stackoverflow.com": [
+    "/",
+    "/"
+  ],
+  "https:/networkengineering.stackexchange.com": [
+    "/"
+  ],
+  "https:/policies.stackoverflow.co": [
+    "/"
+  ],
+  "https:/quantumcomputing.stackexchange.com": [
+    "/"
+  ],
+  "https:/research.rallyuxr.com": [
+    "/stack_overflow/lp/sobanner?channel=app"
+  ],
+  "https:/serverfault.com": [
+    "/"
+  ],
+  "https:/softwareengineering.stackexchange.com": [
+    "/"
+  ],
+  "https:/stackauth.com": [
+    "/"
+  ],
+  "https:/stackexchange.com": [
+    "/",
+    "/sites",
+    "/sites?utm_medium=referral"
+  ],
+  "https:/stackoverflow.blog": [
+    "/",
+    "/?utm_medium=referral"
+  ],
+  "https:/stackoverflow.blog?blb=1": [
+    "/"
+  ],
+  "https:/stackoverflow.co": [
+    "/",
+    "/?utm_medium=referral",
+    "/advertising/?utm_medium=referral",
+    "/advertising/employer-branding/?utm_medium=referral",
+    "/api-solutions/?utm_medium=referral",
+    "/company/press/",
+    "/company/work-here/",
+    "/company/work-here/?utm_medium=referral",
+    "/labs/",
+    "/labs/?utm_medium=referral",
+    "/teams/",
+    "/teams/?utm_medium=referral",
+    "/teams/ai/?utm_medium=referral"
+  ],
+  "https:/stackoverflow.com": [
+    "/",
+    "/",
+    "/help",
+    "/help/",
+    "/help/licensing",
+    "/jobs/companies?so_medium=stackoverflow",
+    "/legal",
+    "/legal/cookie-policy",
+    "/legal/privacy-policy",
+    "/legal/terms-of-service/public",
+    "/users/after-signup/oauth-only",
+    "/users/login?ssrc=head",
+    "/users/login?ssrc=site_switcher",
+    "/users/signup?ssrc=head",
+    "/users/signup?ssrc=site_switcher"
+  ],
+  "https:/stackoverflowteams.com": [
+    "/teams/create/free/?utm_medium=referral"
+  ],
+  "https:/stackoverflowteams.help": [
+    "/en/"
+  ],
+  "https:/superuser.com": [
+    "/"
+  ],
+  "https:/unix.stackexchange.com": [
+    "/"
+  ],
+  "https:/www.opavote.com": [
+    "/results/"
+  ]
+}
+
+STDOUT
+
+docker run -it urlretriever -u "https://arstechnica.com/" -u "https://stackoverflow.com/" -o stdout
+http://www.w3.org/2000/svg
+https://ads-static.conde.digital/production/cns/builds/ars-technica/ars-technica.min.js
+https://arstechnica.com/
+https://arstechnica.com/about-us/
+https://arstechnica.com/ai/
+https://arstechnica.com/ai/2024/11/nvidias-new-ai-audio-model-can-synthesize-sounds-that-have-never-existed/
+https://arstechnica.com/ai/2024/11/openai-is-at-war-with-its-own-sora-video-testers-following-brief-public-leak/
+https://arstechnica.com/cars/
+https://arstechnica.com/cars/2024/11/cadillac-f1-will-be-able-to-race-from-2026-despite-previous-snub/
+https://arstechnica.com/contact-us/
+https://arstechnica.com/culture/
+https://arstechnica.com/culture/2024/11/flour-water-salt-github-the-bread-code-is-a-sourdough-baking-framework/
+https://arstechnica.com/culture/2024/11/keanu-reeves-voices-arch-villain-shadow-in-sonic-3-trailer/
+https://arstechnica.com/culture/2024/11/player-456-is-back-for-revenge-in-squid-game-s2-trailer/
+https://arstechnica.com/gadgets/
+https://arstechnica.com/gadgets/2024/11/are-any-of-apples-official-magsafe-accessories-worth-buying/
+https://arstechnica.com/gadgets/2024/11/qnap-firmware-update-leaves-nas-owners-locked-out-of-their-boxes/
+https://arstechnica.com/gadgets/2024/11/smart-gadgets-failure-to-commit-to-software-support-could-be-illegal-ftc-warns/
+https://arstechnica.com/gadgets/2024/11/the-upside-down-capacitor-in-mid-90s-macs-proven-and-documented-by-hobbyists/
+https://arstechnica.com/gadgets/2024/11/vintage-digicams-arent-just-a-fad-theyre-an-artistic-statement/
+https://arstechnica.com/gaming/
+https://arstechnica.com/gaming/2024/11/sony-is-reportedly-working-on-a-ps5-portable/
+https://arstechnica.com/gaming/2024/11/the-atari-7800-is-a-no-frills-glimpse-into-a-forgotten-gaming-era/
+https://arstechnica.com/general-faq/
+https://arstechnica.com/health/
+https://arstechnica.com/health/2024/11/biden-proposes-guardrails-on-health-care-ai-upping-weight-loss-drug-access/
+https://arstechnica.com/health/2024/11/man-suffers-chemical-burn-that-lasted-months-after-squeezing-limes/
+https://arstechnica.com/health/2024/11/raw-milk-recalled-for-containing-bird-flu-virus-california-reports/
+https://arstechnica.com/health/2024/11/things-arent-looking-good-for-infamous-ceo-of-health-care-terrorists/
+https://arstechnica.com/information-technology/
+https://arstechnica.com/newsletters/
+https://arstechnica.com/page/2/
+https://arstechnica.com/reprints/
+https://arstechnica.com/rss-feeds/
+https://arstechnica.com/science/
+https://arstechnica.com/science/2024/11/300-billion-pledge-at-cop29-climate-summit-a-paltry-sum/
+https://arstechnica.com/science/2024/11/getting-a-drone-to-fly-like-a-pigeon/
+https://arstechnica.com/science/2024/11/how-should-we-treat-beings-that-might-be-sentient/
+https://arstechnica.com/science/2024/11/licking-this-lollipop-will-let-you-taste-virtual-flavors/
+https://arstechnica.com/science/2024/11/what-fossilized-dino-feces-can-tell-us-about-their-rise-to-dominance/
+https://arstechnica.com/search/
+https://arstechnica.com/security/
+https://arstechnica.com/security/2024/11/code-found-online-exploits-logofail-to-install-bootkitty-linux-backdoor/
+https://arstechnica.com/security/2024/11/found-in-the-wild-the-worlds-first-unkillable-uefi-bootkit-for-linux/
+https://arstechnica.com/shopping/2024/11/its-black-friday-and-here-are-the-best-shopping-deals-we-could-find/
+https://arstechnica.com/space/
+https://arstechnica.com/space/2024/11/rocket-report-a-good-week-for-blue-origin-italy-wants-its-own-launch-capability/
+https://arstechnica.com/space/2024/11/with-dragonfly-contract-nasa-will-certify-spacex-for-nuclear-powered-payloads/
+https://arstechnica.com/staff-directory/
+https://arstechnica.com/tech-policy/
+https://arstechnica.com/tech-policy/2024/11/doj-wraps-up-ad-tech-trial-google-is-three-times-a-monopolist/
+https://arstechnica.com/tech-policy/2024/11/fcc-approves-starlink-plan-for-cellular-phone-service-with-some-limits/
+https://arstechnica.com/tech-policy/2024/11/google-drags-ai-rivals-into-search-trial-as-judge-entertains-ai-remedies/
+https://arstechnica.com/tech-policy/2024/11/isps-say-their-excellent-customer-service-is-why-users-dont-switch-providers/
+https://arstechnica.com/tech-policy/2024/11/supreme-court-may-decide-whether-isps-must-terminate-users-accused-of-piracy/
+https://arstechnica.com/tech-policy/2024/11/supreme-court-to-decide-whether-fcc-universal-service-fund-is-an-illegal-tax/
+https://arstechnica.com/tech-policy/2024/11/tech-problems-plague-openai-court-battles-judge-rejects-a-key-fair-use-defense/
+https://arstechnica.com/tech-policy/2024/11/trump-targets-mexico-and-canada-with-tariffs-plus-an-extra-10-for-china/
+https://arstechnica.com/tech-policy/2024/11/workers-demand-more-transparency-after-intel-secures-8b-chips-funding/
+https://arstechnica.com/video/
+https://c.arstechnica.com
+https://cdn.arstechnica.net/wp-content/mu-plugins/ars-snowplow/ars-snowplow-js/dist/main-1-0-4.js?ver=1.0.4
+https://cdn.arstechnica.net/wp-content/plugins/_composer_elasticpress/dist/css/facets-styles.css?ver=7d568203f3965dc85d8a
+https://cdn.arstechnica.net/wp-content/plugins/_composer_elasticpress/dist/css/highlighting-styles.css?ver=252562c4ed9241547293
+https://cdn.arstechnica.net/wp-content/plugins/article-forum-connect/public/js/iframe-resizer.parent.js?ver=5.3.1
+https://cdn.arstechnica.net/wp-content/plugins/article-forum-connect/public/js/iframe.js?ver=1.2.4
+https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/css/ads.872a06.css
+https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/css/app.eec9eb.css
+https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/js/ads.b1f8e1.js
+https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/js/app.2f0f0b.js
+https://cdn.arstechnica.net/wp-content/themes/ars-v9/public/js/stats.ce8765.js
+https://cdn.arstechnica.net/wp-content/themes/ars-v9/resources/scripts/jquery-3.7.1.min.js?ver=3.7.1
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-150x150.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/08/6069407813_bbe06f09fc_o-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-300x300.png
+https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-60x60.png
+https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480.png
+https://cdn.arstechnica.net/wp-content/uploads/2022/07/chip-based-rootkit-384x216.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2022/07/chip-based-rootkit-768x432.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-1000x1000.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-1152x648.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-150x150.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-1536x864.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-384x216.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-500x500.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/04/GettyImages-1038813590-768x432.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-1000x1000-1732556402.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-1440x812.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-2048x1155.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-300x169.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-300x300-1732556401.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-500x500-1732556402.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-640x361.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2023/09/getty-supreme-court-980x553.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/01/starlink-direct-to-cell-1152x648.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/01/starlink-direct-to-cell-1536x864.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/01/starlink-direct-to-cell-384x216.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/01/starlink-direct-to-cell-768x432.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-1000x1000-1732568014.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-300x300-1732568013.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-500x500-1732568013.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/02/music-pirate-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/03/backdoor-150x150.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/03/backdoor-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/03/backdoor-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/03/backdoor-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/08/snoo-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/08/snoo-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/08/snoo-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/08/snoo-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/2024-11-25-16.55.57-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/727-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/727-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/727-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/727-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/727-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1182219843-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1458194548-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1458194548-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1458194548-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1458194548-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1469448038-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-157422481-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-157422481-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-157422481-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-157422481-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1877759960-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1877759960-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1877759960-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-1877759960-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2100329027-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2100329027-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2161647244-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2170989607-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2170989607-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2170989607-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2170989607-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-2177324845-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-84659415-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/GettyImages-878804024-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/IMG_5426-Large-1152x648-1732650962.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/IMG_5426-Large-1536x864-1732650963.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/IMG_5426-Large-384x216-1732650961.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/IMG_5426-Large-768x432-1732650962.jpeg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1024x576.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1440x810.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-2048x1152.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-640x360.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/Intel-Ohio-One-Construction-2024-4-980x551.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-scaled-1000x1000-1732648817.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-scaled-300x300-1732648816.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/call-center-robot-scaled-500x500-1732648817.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/capacitors-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/capacitors-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/capacitors-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/capacitors-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-1000x1000.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-1024x576.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-1440x810.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-2048x1152.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-640x360.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/containers-980x551.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/cop29-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/cop29-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/cop29-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/cop29-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/doradog-scaled-1152x648-1732725978.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/doradog-scaled-1536x864-1732725978.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/doradog-scaled-384x216-1732725977.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/doradog-scaled-768x432-1732725977.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/feces4CROP-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/feces4CROP-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/feces4CROP-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/graphite-impact-shell-gis-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/graphite-impact-shell-gis-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/graphite-impact-shell-gis-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/graphite-impact-shell-gis-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-1152x648-1732301719.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-1536x864-1732301720.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-384x216-1732301717.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/iPhone-MagSafe-accessories-scaled-768x432-1732301718.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/lollipop1CROP-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/lollipop1CROP-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/lollipop1CROP-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/lollipop1CROP-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/lollipop1CROP-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/newglenn1-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/newglenn1-1536x864.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/newglenn1-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/newglenn1-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-1024x576.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-640x360.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box-980x551.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/qnap_box.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/sonic3-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/sonic3-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/sonic3-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/sonic3-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/sonic3-768x432.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/squid1-1152x648.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/squid1-300x300.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/squid1-384x216.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/squid1-500x500.jpg
+https://cdn.arstechnica.net/wp-content/uploads/2024/11/squid1-768x432.jpg
+https://cdn.cookielaw.org
+https://cdn.cookielaw.org/opt-out/otCCPAiab.js
+https://cdn.cookielaw.org/scripttemplates/otSDKStub.js
+https://geolocation.onetrust.com
+https://globalservices.conde.digital
+https://mastodon.social/
+https://player.cnevids.com
+https://player.cnevids.com/interlude/arstechnica.js
+https://schema.org
+https://shiverscissors.com/v2fumwIJOo-LsCB0dlG18VSTW43CpWhUEPJuKeRTzrEQdSPPlMr5GymU
+https://twitter.com/arstechnica
+https://www.aboutads.info/
+https://www.condenast.com/brands/ars-technica
+https://www.condenast.com/privacy-policy/
+https://www.condenast.com/user-agreement/
+https://www.facebook.com/arstechnica
+https://www.googletagmanager.com/gtm.js?id=
+https://www.googletagmanager.com/ns.html?id=GTM-NLXNPCQ
+https://www.googletagservices.com/tag/js/gpt.js
+https://www.instagram.com/arstechnica/
+https://www.youtube.com/
+http://www.w3.org/2000/svg
+https://ai.stackexchange.com
+https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js
+https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js
+https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css
+https://api.stackexchange.com/
+https://apple.stackexchange.com
+https://askubuntu.com/
+https://cdn.cookielaw.org/scripttemplates/otSDKStub.js
+https://cdn.sstatic.net/
+https://cdn.sstatic.net/Img/home/home-overflowai.png?v=69c7882132fb
+https://cdn.sstatic.net/Img/home/home-teams.png?v=3a3570e5f7a6
+https://cdn.sstatic.net/Img/home/illo-home-careers.png?v=b883022c31e3
+https://cdn.sstatic.net/Img/home/illo-home-hero.png?v=4718e8f857c5
+https://cdn.sstatic.net/Img/teams/teams-promo.svg?v=e507948b81bf
+https://cdn.sstatic.net/Js/islands/homepage-wizard.en.js?v=ded99e89b1fe
+https://cdn.sstatic.net/Js/islands/one-tap.en.js?v=23f8c3257ece
+https://cdn.sstatic.net/Js/islands/signup-modal.en.js?v=83630fec4fc9
+https://cdn.sstatic.net/Js/modules/cookie-consent.en.js?v=36bebc18e04f
+https://cdn.sstatic.net/Js/stub.en.js?v=44cbb4d4d062
+https://cdn.sstatic.net/Js/third-party/npm/
+https://cdn.sstatic.net/Js/webpack-chunks/1315.en.js?v=d971ebf7a8e2
+https://cdn.sstatic.net/Js/webpack-chunks/3397.en.js?v=ecde4075784a
+https://cdn.sstatic.net/Js/webpack-chunks/5906.en.js?v=2f743119b3b6
+https://cdn.sstatic.net/Js/webpack-chunks/7224.en.js?v=8ca862d5f302
+https://cdn.sstatic.net/Js/webpack-chunks/stacks-svelte.en.js?v=e36593c9174c
+https://cdn.sstatic.net/Js/webpack-chunks/svelte.en.js?v=150134e89426
+https://cdn.sstatic.net/Shared/Channels/channels.css?v=5981bb1a5bd7
+https://cdn.sstatic.net/Shared/Product/product.css?v=669cb299504f
+https://cdn.sstatic.net/Shared/stacks.css?v=619122b796ae
+https://cdn.sstatic.net/Sites/ai/Img/apple-touch-icon.png?v=f14d741b295c
+https://cdn.sstatic.net/Sites/apple/Img/apple-touch-icon.png?v=daa7ff1d953e
+https://cdn.sstatic.net/Sites/askubuntu/Img/apple-touch-icon.png?v=e16e1315edd6
+https://cdn.sstatic.net/Sites/dba/Img/apple-touch-icon.png?v=cdcd5ff7b29e
+https://cdn.sstatic.net/Sites/gamedev/Img/apple-touch-icon.png?v=0cfb55927bd2
+https://cdn.sstatic.net/Sites/networkengineering/Img/apple-touch-icon.png?v=d66b1118cec8
+https://cdn.sstatic.net/Sites/quantumcomputing/Img/apple-touch-icon.png?v=2af3cc2b87e8
+https://cdn.sstatic.net/Sites/serverfault/Img/apple-touch-icon.png?v=6c3100d858bb
+https://cdn.sstatic.net/Sites/softwareengineering/Img/apple-touch-icon.png?v=5e581fc45e58
+https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon
+https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a
+https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196
+https://cdn.sstatic.net/Sites/stackoverflow/Img/icon-48.png?v=b7e36f88ff92
+https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=0420bc7abade
+https://cdn.sstatic.net/Sites/superuser/Img/apple-touch-icon.png?v=0ad5b7a83e49
+https://cdn.sstatic.net/Sites/unix/Img/apple-touch-icon.png?v=5cf7fe716a89
+https://chat.stackoverflow.com/?tab=site
+https://data.stackexchange.com/
+https://dba.stackexchange.com
+https://gamedev.stackexchange.com
+https://linkedin.com/company/stack-overflow
+https://meta.stackoverflow.com
+https://meta.stackoverflow.com/
+https://networkengineering.stackexchange.com
+https://policies.stackoverflow.co/
+https://quantumcomputing.stackexchange.com
+https://research.rallyuxr.com/stack_overflow/lp/sobanner?channel=app
+https://serverfault.com/
+https://softwareengineering.stackexchange.com
+https://stackauth.com
+https://stackexchange.com
+https://stackexchange.com/sites
+https://stackexchange.com/sites?utm_medium=referral
+https://stackoverflow.blog
+https://stackoverflow.blog/?utm_medium=referral
+https://stackoverflow.blog?blb=1
+https://stackoverflow.co/
+https://stackoverflow.co/?utm_medium=referral
+https://stackoverflow.co/advertising/?utm_medium=referral
+https://stackoverflow.co/advertising/employer-branding/?utm_medium=referral
+https://stackoverflow.co/api-solutions/?utm_medium=referral
+https://stackoverflow.co/company/press/
+https://stackoverflow.co/company/work-here/
+https://stackoverflow.co/company/work-here/?utm_medium=referral
+https://stackoverflow.co/labs/
+https://stackoverflow.co/labs/?utm_medium=referral
+https://stackoverflow.co/teams/
+https://stackoverflow.co/teams/?utm_medium=referral
+https://stackoverflow.co/teams/ai/?utm_medium=referral
+https://stackoverflow.com
+https://stackoverflow.com/
+https://stackoverflow.com/help
+https://stackoverflow.com/help/
+https://stackoverflow.com/help/licensing
+https://stackoverflow.com/jobs/companies?so_medium=stackoverflow
+https://stackoverflow.com/legal
+https://stackoverflow.com/legal/cookie-policy
+https://stackoverflow.com/legal/privacy-policy
+https://stackoverflow.com/legal/terms-of-service/public
+https://stackoverflow.com/users/after-signup/oauth-only
+https://stackoverflow.com/users/login?ssrc=head
+https://stackoverflow.com/users/login?ssrc=site_switcher
+https://stackoverflow.com/users/signup?ssrc=head
+https://stackoverflow.com/users/signup?ssrc=site_switcher
+https://stackoverflowteams.com/teams/create/free/?utm_medium=referral
+https://stackoverflowteams.help/en/
+https://superuser.com/
+https://twitter.com/stackoverflow
+https://unix.stackexchange.com
+https://www.facebook.com/officialstackoverflow/
+https://www.googletagmanager.com/gtag/js?id=G-WCZ03SZFCQ
+https://www.instagram.com/thestackoverflow
+https://www.opavote.com/results/

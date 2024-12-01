@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: extract-links
+spec:
+  template:
+    spec:
+      containers:
+      - name: extract-links
+        image: test
+        command: ["bash","/scripts/entrypoint.sh"]
+      restartPolicy: Never
+  backoffLimit: 4
