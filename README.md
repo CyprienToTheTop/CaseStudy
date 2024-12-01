@@ -42,6 +42,8 @@ see [manifest.yaml](manifest.yaml) file,
 ## Part 3
 
 I'm more comfortable with GitHub Actions, this is what I use daily in my current job
+I did not put in practice, as I don't have really a Personal Kubernetes Cluster other than my Minikub under control, so I imagined it as I would deploy it on an AWS, but without having a fully functionnal AWS env.
+Therefore, the login, build push to ECR and deployment to EKS cluster are not functionnal in the workflow execution
 
 see [build-deploy-kubernetes.yaml](.github/workflows/build-deploy-kubernetes.yaml) file
 
