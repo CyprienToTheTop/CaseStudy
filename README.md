@@ -28,7 +28,7 @@ To execute it, example below
 docker run -it urlretriever -u "https://arstechnica.com/" -u "https://stackoverflow.com/" -o stdout
 ```
 
-Regarding the scan, I used docker scout commands, I am not that familiar with it, in my current job, I more rely on the automated scan from GCP on the Google Artifact Registry Artifacts.
+Regarding the scan, I used docker scout commands, see [vulnerabilities_scan.md](vulnerabilities_scan.md) I am not that familiar with it, in my current job, I more rely on the automated scan from GCP on the Google Artifact Registry Artifacts.
 Here I can see that there are some vulnerabilities, but none of them with an available fix.
 I recommand using a tool that will track the vulnerabilities and which will pop up a message when a fix become available on an artifact pushed on the registry
 
