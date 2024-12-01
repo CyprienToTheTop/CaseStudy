@@ -28,15 +28,22 @@ To execute it, example below
 docker run -it urlretriever -u "https://arstechnica.com/" -u "https://stackoverflow.com/" -o stdout
 ```
 
+Regarding the scan, I used docker scout commands, I am not that familiar with it, in my current job, I more rely on the automated scan from GCP on the Google Artifact Registry Artifacts.
+Here I can see that there are some vulnerabilities, but none of them with an available fix.
+I recommand using a tool that will track the vulnerabilities and which will pop up a message when a fix become available on an artifact pushed on the registry
+
 ### Kubernetes
 
-see [manifest.yaml](manifest.yaml) file, I used a job because this I know that after execution of script, the pod will die
+I set up a Minikube environment on my laptop, following https://gist.github.com/wholroyd/748e09ca0b78897750791172b2abb051
+I pushed the image to a public repository of my own on Docker Hub 
+I created a namespace casestudy where I deployed the pod, with already the args " args: ["-u https://arstechnica.com/ -o stdout"] "
+see [manifest.yaml](manifest.yaml) file, 
 
 ## Part 3
 
 I'm more comfortable with GitHub Actions, this is what I use daily in my current job
 
-see [.github/workflows/build-deploy-kubernetes.yaml](build-deploy-kubernetes.yaml) file
+see [build-deploy-kubernetes.yaml](.github/workflows/build-deploy-kubernetes.yaml) file
 
 ## Part 4
 See folder Part4 for the scripts

@@ -1,13 +1,9 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
   name: extract-links
 spec:
-  template:
-    spec:
-      containers:
-      - name: extract-links
-        image: test
-        command: ["bash","/scripts/entrypoint.sh"]
-      restartPolicy: Never
-  backoffLimit: 4
+  containers:
+  - name: extract-links
+    image: cyprientothetop/casestudy:latest
+    args: ["-u https://arstechnica.com/ -o stdout"]
